@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tarjeta de San Valentín</title>
+  <style>
+    :root{--bg:#fff0f3;--heart:#ff2d5c;--heart-dark:#e60039;--text:#fff}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
+    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff7f9 0%,var(--bg) 40%);padding:24px}
+    .card{width:100%;max-width:760px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
+    a.heart{display:inline-block;position:relative;width:min(62vmin,420px);text-decoration:none;outline:none;border-radius:20px;transition:transform .22s ease,box-shadow .22s ease}
+    a.heart:active,a.heart:hover{transform:scale(1.03)}
+    svg{width:100%;height:auto;display:block}
+    .text-overlay{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;width:78%;text-align:center;padding:1.2vmin}
+    .label{color:var(--text);font-weight:800;font-size:clamp(18px,4.4vw,36px);text-align:center;text-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .sub{color:rgba(255,255,255,.95);font-size:clamp(12px,2.2vw,16px);margin-top:6px;font-weight:600;opacity:.95}
+    .hint{font-size:14px;color:#7a1b2b;margin-top:6px}
+    @media (max-width:420px){.card{padding:6px}.hint{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a class="heart" id="heartLink" href="Galaxia_.htm" target="_blank" aria-label="Abrir enlace">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ff6b88" />
+              <stop offset="1" stop-color="#ff2d5c" />
+            </linearGradient>
+            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#d32a4a" flood-opacity=".18"/>
+            </filter>
+            <clipPath id="heartClip">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </clipPath>
+          </defs>
+          <g filter="url(#shadow)">
+            <path fill="url(#g)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </g>
+          <!-- Removed foreignObject (inconsistent rendering across browsers).
+               Use an HTML overlay positioned on the link for reliable text display. -->
+        </svg>
+      
+      <div class="text-overlay">
+        <div class="label">Para Criseilys Paola</div>
+        <div class="sub">Feliz San Valentín</div>
+      </div>
+    </a>
+    <div class="hint">Toca el corazón para abrir el enlace</div>
+  </div>
+
+  <script>
+    // Efecto táctil mínimo y accesibilidad: permite cambiar destino desde JS si se desea
+    const link = document.getElementById('heartLink');
+    // Ejemplo: cambiar destino dinámicamente (descomenta y edita la URL)
+    // link.href = 'https://tudestino.com';
+
+    // Pequeña animación al tocar (para dispositivos táctiles)
+    link.addEventListener('pointerdown', ()=> link.style.transform = 'scale(.98)');
+    link.addEventListener('pointerup', ()=> link.style.transform = '');
+    link.addEventListener('pointercancel', ()=> link.style.transform = '');
+  </script>
+</body>
+</html>
